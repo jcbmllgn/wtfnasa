@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require angular
-//= require angular-animate
-//= require angular-resource
+//= require unstable/angular
+//= require unstable/angular-animate
+//= require unstable/angular-resource
 
 //= require_tree .
 
