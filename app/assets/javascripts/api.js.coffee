@@ -1,5 +1,7 @@
 angular.module("wtfnasa_app.api", ["ngResource"])
 
-  .factory "$API", ( $resource ) ->
-    $resource "/api/facts/:id/:action"
-
+  .factory "$API", [
+    "$resource"
+    ( $resource ) ->
+      $resource "/api/facts/:id/:action"
+  ]

@@ -1,5 +1,7 @@
 angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
-  .filter "getById", ->
+  .filter "getById",[ ->
+    "input"
+    "id"
     (input, id) ->
       i = 0
       len = input.length
@@ -7,7 +9,7 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
         return input[i]  if +input[i].id is +id
         i++
       null
-
+  ]
   .controller "LandingPageController", [
     "$http"
     "$scope"
