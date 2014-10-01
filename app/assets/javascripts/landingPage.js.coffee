@@ -37,6 +37,7 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
           $scope.randomFact()
 
       $scope.randomFact = (current_fact_id, vote) ->
+        console.log 'here'
         debugger
         $scope.fact = $scope.facts[Math.floor(Math.random() * $scope.facts.length)];
         $location.path("/#{$scope.fact.id}")
