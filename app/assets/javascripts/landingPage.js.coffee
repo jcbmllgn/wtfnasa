@@ -1,4 +1,4 @@
-angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
+angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api", "LocalStorageModule" ] )
   .filter "getById",[ ->
     "input"
     "id"
@@ -16,9 +16,11 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
     "$location"
     "$API"
     "$filter"
-    ( $http, $scope, $location, $API, $filter ) ->
+    "localStorageService"
+    ( $http, $scope, $location, $API, $filter, localStorageService ) ->
 
       $scope.factHistory = []
+      localStorageService.bind($scope, 'factHistory', $scope.factHistory)
 
       $API.query().$promise.then (data) ->
         $scope.facts = data
