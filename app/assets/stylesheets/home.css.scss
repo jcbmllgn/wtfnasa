@@ -1,3 +1,54 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/border-radius";
+
+$black: #3e3e3e;
+$blue: #2059a6;
+
+a[ng-click] {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  @include border-radius(.5em);
+  font-size: 1.4em;
+  color: #fff;
+  background: $blue;
+  padding: .5em 1em;
+
+  &:hover {
+    background: darken( $blue, 15% );
+  }
+}
+
+.container {
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+  padding: 3em 2em;
+  margin: 0 auto;
+
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7em;
+  }
+}
+
+.title-section {
+  text-align: center;
+
+  h2 {
+    // wtf text
+    font-size: 1em;
+    font-weight: 100;
+    color: lighten( $black, 15% );
+  }
+
+  h1 {
+    // fact title
+    color: $black;
+  }
+}

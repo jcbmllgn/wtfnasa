@@ -1,14 +1,16 @@
 .container( ng-controller="LandingPageController" )
-  %h2
-    %i What the fuck has NASA done to make your life awesome?
+  = image_tag "wtfnasa_logo.png", class: "logo"
+  .title-section
+    %h2
+      %i What the fuck has NASA done to make your life awesome?
 
-  %h1 {{fact.title}}
+    %h1 {{fact.title}}
 
   %p upvotes: {{fact.upvote}}
   %p downvotes: {{fact.downvote}}
 
-  %a( ng-click="vote('upvote')" ) That rockets!
-  %a( ng-click="vote('downvote')" ) Fail to launch
+  %a.btn( ng-click="vote('downvote')" ) Fail to launch
+  %a.btn.btn-success( ng-click="vote('upvote')" ) That rockets!
 
   %p Whoa, really?
   %p {{fact.description}}
