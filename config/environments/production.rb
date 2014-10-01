@@ -19,18 +19,27 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
+  # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = Uglifier.new(mangle: false)
-  config.assets.css_compressor = :sass
+  # Compress JavaScripts and CSS
+  config.assets.compress = true
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = Sprockets::LazyCompressor.new {
+    Uglifier.new(:mangle => false, :compress => {sequences: false})
+  }
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # Do fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = true
 
-  # Generate digests for assets URLs.
+  # Generate digests for assets URLs
   config.assets.digest = true
+
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Add the locales path
+  config.assets.paths << Rails.root.join('app', 'assets', 'locales')
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
