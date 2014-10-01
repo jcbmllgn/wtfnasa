@@ -412,13 +412,6 @@
     "thats_weak": 0,
     "that_rockets": 0
 }, {
-    "id": 61,
-    "title": "",
-    "learn_more": "",
-    "source": "",
-    "thats_weak": 0,
-    "that_rockets": 0
-}, {
     "id": 62,
     "title": "Played a pivotal role in the emergence of cloud technology",
     "learn_more": "NASA has also played a pivotal role in the emergence of cloud technology that could reshape the vast IT world here on Earth. Chris Kemp, the first CTO of IT at NASA, helped to lead an effort at the U.S. space agency to create a cloud compute platform. The original 9,000 lines of code, known as Nova, have become the cornerstone of the OpenStack cloud project. OpenStack now has the backing of major IT vendors, including IBM, Dell, HP, Cisco, AT&T and Intel. Today OpenStack is the backbone of cloud offerings from Cisco, Dell, HP and many others in the emerging cloud market. The project has become so successful, in fact, that NASA no longer needs to be actively involved. NASA continued to make code contributions as part of the OpenStack effort, until fairly recently",

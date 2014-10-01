@@ -6,10 +6,19 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  # Example of regular route:
-  get '/(*all)' => 'home#index'
+  namespace :api do
+    resources :facts do
+      collection do
+        post :upvote
+        post :downvote
+      end
+    end
+  end
 
-  resources :facts
+  # Example of regular route:
+  # This needs to come after all other route definitions as the fallback.
+  # If this comes before the api namespace everything will break...
+  get '/(*all)' => 'home#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

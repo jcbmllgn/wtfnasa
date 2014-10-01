@@ -5,3 +5,27 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+facts = JSON.parse(File.read("#{Rails.root}/db/wtfnasa_facts.json"))
+facts.each do |fact|
+
+  if Fact.where( title: fact['title'] ).count == 0
+
+    @fact = Fact.new()
+
+    @fact.title = fact['title']
+    @fact.description = fact['learn_more']
+    @fact.url = fact['source']
+    @fact.upvote = 0
+    @fact.downvote = 0
+
+    @fact.save!
+
+    puts "Created fact: #{@fact.title}"
+
+  else
+
+    puts "Fact already exists: #{ fact['title'] }"
+  end
+
+end

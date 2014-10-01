@@ -1,10 +1,10 @@
-class FactsController < ApplicationController
+class Api::FactsController < Api::AbstractController
   before_action :set_fact, only: [:show, :edit, :update, :destroy]
 
   # GET /facts
   # GET /facts.json
   def index
-    @facts = Fact.all
+    render :json => Fact.all
   end
 
   # GET /facts/1
@@ -51,15 +51,39 @@ class FactsController < ApplicationController
     end
   end
 
-  # DELETE /facts/1
-  # DELETE /facts/1.json
-  def destroy
-    @fact.destroy
-    respond_to do |format|
-      format.html { redirect_to facts_url, notice: 'Fact was successfully destroyed.' }
-      format.json { head :no_content }
+  def upvote
+
+    @fact = Fact.find(params[:id])
+
+    @fact.upvote = @fact.upvote + 1
+    if @fact.save!
+      return render status: 201
+    else
+      head status: 500
     end
   end
+
+  def downvote
+
+    @fact = Fact.find(params[:id])
+
+    @fact.downvote = @fact.downvote + 1
+    if @fact.save!
+      return render status: 201
+    else
+      head status: 500
+    end
+  end
+
+  # # DELETE /facts/1
+  # # DELETE /facts/1.json
+  # def destroy
+  #   @fact.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to facts_url, notice: 'Fact was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +93,6 @@ class FactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fact_params
-      params.require(:fact).permit(:title, :description, :url, :upvote, :downvote)
+      params.require(:fact).permit(:title, :description, :url, :upvote, :downvote, :id)
     end
 end

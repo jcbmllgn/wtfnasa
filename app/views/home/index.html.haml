@@ -1,3 +1,12 @@
-%div( ng-controller="LandingPageController" )
-  %h1 home page
-  %p {{facts}}
+.container( ng-controller="LandingPageController" )
+  %h2
+    %i What the fuck has NASA done to make your life awesome?
+
+  %h1 {{fact.title}}
+
+  %a( ng-click="vote('upvote')" ) That rockets!
+  %a( ng-click="vote('downvote')" ) Fail to launch
+
+  %p Whoa, really?
+  %p {{fact.description}}
+  %a( ng-href="{{fact.url}}" target="_blank" ) {{fact.url}}
