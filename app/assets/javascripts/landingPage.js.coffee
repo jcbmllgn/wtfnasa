@@ -18,6 +18,8 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
     "$filter"
     ( $http, $scope, $location, $API, $filter ) ->
 
+      $scope.factHistory = []
+
       $API.query().$promise.then (data) ->
         $scope.facts = data
 
@@ -39,6 +41,8 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api" ] )
       $scope.randomFact = (current_fact_id, vote) ->
         $scope.fact = $scope.facts[Math.floor(Math.random() * $scope.facts.length)];
         $location.path("/#{$scope.fact.id}")
+
+        $scope.factHistory.push( $scope.fact )
 
       $scope.vote = ( up_or_down_vote ) ->
         $API.save( { action: up_or_down_vote }, { id: $scope.fact.id } )
