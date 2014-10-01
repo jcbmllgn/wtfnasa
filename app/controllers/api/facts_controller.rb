@@ -4,7 +4,12 @@ class Api::FactsController < Api::AbstractController
   # GET /facts
   # GET /facts.json
   def index
-    render :json => Fact.all
+
+    if params[:all] == true
+      render :json => Fact.all
+    else
+      render :json => Fact.where( approved: true )
+    end
   end
 
   # GET /facts/1
