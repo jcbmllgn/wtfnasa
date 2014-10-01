@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :api do
-    resources :facts do
+    resources :facts, :defaults => { :format => :json } do
       collection do
         post :upvote
         post :downvote

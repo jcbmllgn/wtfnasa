@@ -4,6 +4,9 @@
 
   %h1 {{fact.title}}
 
+  %p upvotes: {{fact.upvote}}
+  %p downvotes: {{fact.downvote}}
+
   %a( ng-click="vote('upvote')" ) That rockets!
   %a( ng-click="vote('downvote')" ) Fail to launch
 

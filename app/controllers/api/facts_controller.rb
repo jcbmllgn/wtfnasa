@@ -1,5 +1,5 @@
 class Api::FactsController < Api::AbstractController
-  before_action :set_fact, only: [:show, :edit, :update, :destroy]
+  before_action :set_fact, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /facts
   # GET /facts.json
@@ -57,14 +57,11 @@ class Api::FactsController < Api::AbstractController
   end
 
   def upvote
-
-    @fact = Fact.find(params[:id])
-
     @fact.upvote = @fact.upvote + 1
     if @fact.save!
-      return render status: 201
+      render status: 201, json: {}
     else
-      head status: 500
+      render status: 500, json: {}
     end
   end
 
@@ -74,9 +71,9 @@ class Api::FactsController < Api::AbstractController
 
     @fact.downvote = @fact.downvote + 1
     if @fact.save!
-      return render status: 201
+      render status: 201, json: {}
     else
-      head status: 500
+      render status: 500, json: {}
     end
   end
 
