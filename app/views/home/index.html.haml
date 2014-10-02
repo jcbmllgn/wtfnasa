@@ -1,1 +1,8 @@
-%div( ui-view )
+.container
+  = image_tag "wtfnasa_logo.png", class: "logo"
+
+  .nav( ng-controller="NavigationController" )
+    %a.nav-btn( ui-sref="all_facts" ng-if="!state.includes('all_facts')" ) See all facts
+    %a.nav-btn.btn( ui-sref="home" ng-if="!state.includes('home')" ) Home
+
+  %div( ui-view )

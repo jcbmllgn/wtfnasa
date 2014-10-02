@@ -1,4 +1,4 @@
-angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api", "LocalStorageModule" ] )
+angular.module( "wtfnasa_app.home", [ "wtfnasa_app.api", "LocalStorageModule" ] )
   .filter "getById",[ ->
     "input"
     "id"
@@ -10,25 +10,26 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api", "LocalStorageModule" ]
         i++
       null
   ]
+
   .controller "LandingPageController", [
     "$http"
     "$scope"
-    "$location"
     "$API"
     "$filter"
     "localStorageService"
-    ( $http, $scope, $location, $API, $filter, localStorageService ) ->
+    "$state"
+    "$stateParams"
+    ( $http, $scope, $API, $filter, localStorageService, $state, $stateParams ) ->
 
       $scope.factHistory = []
       localStorageService.bind($scope, 'factHistory', $scope.factHistory)
 
-      $API.query().$promise.then (data) ->
+      $API.cacheQuery().$promise.then (data) ->
         $scope.facts = data
 
-        id = parseInt( $location.$$url.replace(/\D/g,'') )
-        if id > 0
+        if parseInt( $stateParams.id ) > 0
           # wtfnasa.com/:id:
-          $scope.fact = $filter('getById')($scope.facts, id)
+          $scope.fact = $filter('getById')( $scope.facts, $stateParams.id )
 
           if $scope.fact is null
             # If you go to wtfnasa.com/23478927489023740
@@ -42,7 +43,8 @@ angular.module( "wtfnasa_app.facts", [ "wtfnasa_app.api", "LocalStorageModule" ]
 
       $scope.randomFact = (current_fact_id, vote) ->
         $scope.fact = $scope.facts[Math.floor(Math.random() * $scope.facts.length)];
-        $location.path("/#{$scope.fact.id}")
+
+        $state.go( 'home', id: $scope.fact.id )
 
         $scope.factHistory.push( $scope.fact )
 

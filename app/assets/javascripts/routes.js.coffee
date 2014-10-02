@@ -21,11 +21,13 @@ angular.module("wtfnasa_app.routes", [ "ui.router" ])
       $urlRouterProvider.otherwise("/");
 
       $stateProvider
-        .state "home",
-          url: "/"
-          templateUrl: "home.html"
-
         .state "all_facts",
           url: "/facts"
-          templateUrl: "all_facts.html"
+          templateUrl: "view_all_facts.html"
+
+        .state "home",
+          # home has to come after all_facts otherwise going to /facts will redirect to /
+          url: "/{id}"
+          templateUrl: "home.html"
+
   ]
