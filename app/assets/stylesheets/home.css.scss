@@ -1,5 +1,12 @@
 @import "compass/css3/border-radius";
 
+* {
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+}
+
 $black: #3e3e3e;
 $blue: #2059a6;
 
@@ -28,13 +35,13 @@ a[ng-click] {
   max-width: 100%;
   padding: 3em 2em;
   margin: 0 auto;
+}
 
-  .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 7em;
-  }
+img.logo {
+  position: absolute;
+  top: 1em;
+  left: 0;
+  width: 7em;
 }
 
 .title-section {

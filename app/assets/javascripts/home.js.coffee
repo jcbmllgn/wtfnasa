@@ -5,4 +5,5 @@ angular.module( "wtfnasa_app", [
   "wtfnasa_app.routes"
   "wtfnasa_app.api"
   "LocalStorageModule"
+  "ui.router"
 ])
