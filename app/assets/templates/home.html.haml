@@ -11,13 +11,16 @@
 
   %p Whoa, really?
   %p {{fact.description}}
-  %a( ng-href="{{fact.url}}" target="_blank" ) {{fact.url}}
+
+  %p.source
+    Source:
+    %a( ng-href="{{fact.url}}" target="_blank" ) {{fact.url}}
 
 
   .history( ng-if="factHistory.length > 1" )
     %hr/
 
-    %h5 What awesome facts have you seen so far?
+    %h5 What facts have you seen so far?
 
     %ul
       %li( ng-repeat="f in factHistory" ng-hide="$last" ) {{f.title}}

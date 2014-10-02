@@ -11,8 +11,8 @@ $black: #3e3e3e;
 $blue: #2059a6;
 $red: rgb(227, 46, 61);
 
-.hide {
-  display: none;
+.text-center {
+  text-align: center;
 }
 
 a[ng-click] {
@@ -52,6 +52,13 @@ a[ng-click] {
   margin: 0 auto;
 }
 
+.home {
+
+  .source {
+    font-size: .8em;
+  }
+}
+
 img.logo {
   position: absolute;
   top: 1em;
@@ -83,9 +90,30 @@ a.nav-btn {
 
 .launch-buttons {
   text-align: center;
+  padding: 3em 0;
 
   .btn-success {
     margin-left: 1em;
+  }
+}
+
+.all-facts {
+
+  a {
+    color: $black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .upvotes {
+    color: $blue;
+  }
+
+  .downvotes {
+    color: $red;
   }
 }
 

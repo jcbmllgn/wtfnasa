@@ -1,12 +1,12 @@
 .all-facts( ng-controller="AllFactsController" )
 
-  %h2 Listing all facts
+  .text-center
+    %h2 Listing all facts
 
   %ul
     %li( ng-repeat="fact in facts" )
-      %span.upvotes {{ fact.upvote }}
       %span.downvotes {{ fact.downvote }}
-
-      %a( ng-href="/{{fact.id}}" ) {{ fact.title }}
+      %span.upvotes {{ fact.upvote }}
+      %a( ng-href="{{fact.url}}" target="_blank" ) Source
       |
-      %a( ng-href="{{fact.url}}" ) Source
+      %a( ng-href="/{{fact.id}}" ) {{ fact.title }}
